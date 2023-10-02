@@ -2,11 +2,13 @@ package com.payment.client;
 
 
 
-import org.json.JSONObject;
-
 import com.payment.dto.RequestDTO;
+import com.payment.dto.ResponseSaldoDTO;
+import com.payment.dto.ResponseTransactionDTO;
+import com.payment.dto.ResponseTransferDTO;
 
 public interface ClientRestRequest {
-	JSONObject getRestResponse(String url);
-	JSONObject postRestResponse(String url, RequestDTO body);
+	ResponseSaldoDTO getRestSaldo(String url, String accountId);
+	ResponseTransactionDTO getRestTransazioni(String url, String accountId);
+	ResponseTransferDTO postRestBonifico(String url, String accountId, RequestDTO body);
 }

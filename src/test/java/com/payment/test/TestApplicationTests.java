@@ -1,25 +1,24 @@
 package com.payment.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.json.JsonParseException;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.payment.dto.AccountDTO;
 import com.payment.dto.CreditorDTO;
 import com.payment.dto.LegalPersonBeneficiaryDTO;
@@ -34,23 +33,37 @@ import com.payment.service.ContoService;
 
 @SpringBootTest
 class TestApplicationTests {
-
+	
 	@Test
 	void contextLoads() {
 	}
 	
+   	@Autowired
+   	WebApplicationContext webApplicationContext;
 	@Autowired
     private ContoService contoService;
+	
+    protected String mapToJson(Object obj) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(obj);
+    }
+    
+    protected <T> T mapFromJson(String json, Class<T> clazz)
+        throws JsonParseException, JsonMappingException, IOException {
+        
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readValue(json, clazz);
+    }
  
     @Test
-    public void testLetturaSaldo() {
+    public void testServiceLetturaSaldo() {
     	String accountId = "14537780";
     	SaldoDTO saldo = contoService.letturaSaldo(accountId);
         Assert.assertTrue(saldo!=null && saldo.getAccountId()!=null && saldo.getAccountId().equals(accountId.toString()));
     }
     
     @Test
-    public void testBonificoError() throws ExceptionRest {
+    public void testBonificoError() throws Exception {
     	String accountId = "14537780";
     	RequestDTO request = new RequestDTO();
     	CreditorDTO creditor = new CreditorDTO();
@@ -60,7 +73,10 @@ class TestApplicationTests {
     	account.setBicCode("SELBIT2BXXX");
     	creditor.setAccount(account);
     	request.setCreditor(creditor);
-    	request.setExecutionDate("2019-04-01");
+    	SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+    	String fromS = "1-Apr-2019";
+    	Date executionDate = formatter.parse(fromS);
+    	request.setExecutionDate(executionDate);
     	request.setUri("REMITTANCE_INFORMATION");
     	request.setDescription("Payment invoice 75/2017");
     	request.setAmount(800);
@@ -80,12 +96,14 @@ class TestApplicationTests {
     	tax.setLegalPersonBeneficiary(legal);
     	request.setTaxRelief(tax);
     	
-    	TransferDTO transfer = contoService.bonifico(accountId, request);
-        Assert.assertTrue(transfer!=null && transfer.getError()!=null && (transfer.getError().getCode().equals("API000") || transfer.getError().getCode().equals("REQ010")));
+        ExceptionRest bonificoException = assertThrows(ExceptionRest.class,
+				() -> contoService.bonifico(accountId, request));
+		assertEquals("API000", bonificoException.getCode());
+		
     }
     
     @Test
-    public void testLetturaTransazioni() throws ParseException {
+    public void testServiceLetturaTransazioni() throws ParseException {
     	String accountId = "14537780";
     	
     	SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);

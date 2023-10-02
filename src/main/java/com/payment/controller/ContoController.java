@@ -15,7 +15,6 @@ import com.payment.dto.ListTransactionDTO;
 import com.payment.dto.RequestDTO;
 import com.payment.dto.SaldoDTO;
 import com.payment.dto.TransferDTO;
-import com.payment.exception.ExceptionRest;
 import com.payment.service.ContoService;
 
 @RestController
@@ -35,9 +34,8 @@ public class ContoController {
 	    return contoService.bonifico(accountId.toString(), request);
 	}
 	
-	
 	@RequestMapping(value = "/{accountId}/transactions", method = RequestMethod.GET)
-    public ListTransactionDTO letturaSaldo(@PathVariable Long accountId, @RequestParam("from") @DateTimeFormat(pattern="yyyy-MM-dd") Date from, @RequestParam("to") @DateTimeFormat(pattern="yyyy-MM-dd") Date to) {
+    public ListTransactionDTO letturaTransazioni(@PathVariable Long accountId, @RequestParam("from") @DateTimeFormat(pattern="yyyy-MM-dd") Date from, @RequestParam("to") @DateTimeFormat(pattern="yyyy-MM-dd") Date to) {
         return contoService.letturaTransazioni(accountId.toString(), from, to);
     }
 

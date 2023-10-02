@@ -1,22 +1,24 @@
 package com.payment.dto;
 
+import java.util.Date;
+
 public class AmountDTO {
 	
-	private int debtorAmount;
+	private Integer debtorAmount;
 	private String debtorCurrency;
-	private int creditorAmount;
+	private Integer creditorAmount;
 	private String creditorCurrency;
-	private String creditorCurrencyDate;
-	private int exchangeRate;
+	private Date creditorCurrencyDate;
+	private Integer exchangeRate;
 	
 	public AmountDTO() {
 	}
 
-	public int getDebtorAmount() {
+	public Integer getDebtorAmount() {
 		return debtorAmount;
 	}
 
-	public void setDebtorAmount(int debtorAmount) {
+	public void setDebtorAmount(Integer debtorAmount) {
 		this.debtorAmount = debtorAmount;
 	}
 
@@ -28,11 +30,11 @@ public class AmountDTO {
 		this.debtorCurrency = debtorCurrency;
 	}
 
-	public int getCreditorAmount() {
+	public Integer getCreditorAmount() {
 		return creditorAmount;
 	}
 
-	public void setCreditorAmount(int creditorAmount) {
+	public void setCreditorAmount(Integer creditorAmount) {
 		this.creditorAmount = creditorAmount;
 	}
 
@@ -44,19 +46,19 @@ public class AmountDTO {
 		this.creditorCurrency = creditorCurrency;
 	}
 
-	public String getCreditorCurrencyDate() {
+	public Date getCreditorCurrencyDate() {
 		return creditorCurrencyDate;
 	}
 
-	public void setCreditorCurrencyDate(String creditorCurrencyDate) {
+	public void setCreditorCurrencyDate(Date creditorCurrencyDate) {
 		this.creditorCurrencyDate = creditorCurrencyDate;
 	}
 
-	public int getExchangeRate() {
+	public Integer getExchangeRate() {
 		return exchangeRate;
 	}
 
-	public void setExchangeRate(int exchangeRate) {
+	public void setExchangeRate(Integer exchangeRate) {
 		this.exchangeRate = exchangeRate;
 	}
 

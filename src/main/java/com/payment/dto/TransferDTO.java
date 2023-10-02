@@ -1,32 +1,32 @@
 package com.payment.dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class TransferDTO {
+public class TransferDTO implements Serializable {
 	
 	private String moneyTransferId;
 	private String status;
-    private String direction;
-    private CreditorDTO creditor;
-    private DebtorDTO debtor;
-    private String cro;
-    private String uri;
-    private String trn;
-    private String description;
-    private Date createdDatetime;
-    private Date accountedDatetime;
-    private String debtorValueDate;
-    private String creditorValueDate;
+	private String direction;
+	private CreditorDTO creditor;
+	private DebtorDTO debtor;
+	private String cro;
+	private String uri;
+	private String trn;
+	private String description;
+	private Date createdDatetime;
+	private Date accountedDatetime;
+	private Date debtorValueDate;
+    private Date creditorValueDate;
     private AmountDTO amount;
-    private boolean isUrgent;
-    private boolean isInstant;
+    private Boolean isUrgent;
+    private Boolean isInstant;
     private String feeType;
     private String feeAccountId;
     private ArrayList<FeeDTO> fees;
-    private boolean hasTaxRelief;
-	private ErrorDTO error;
-    
+    private Boolean hasTaxRelief;
+	
 	public TransferDTO() {
 	}
 
@@ -118,19 +118,19 @@ public class TransferDTO {
 		this.accountedDatetime = accountedDatetime;
 	}
 
-	public String getDebtorValueDate() {
+	public Date getDebtorValueDate() {
 		return debtorValueDate;
 	}
 
-	public void setDebtorValueDate(String debtorValueDate) {
+	public void setDebtorValueDate(Date debtorValueDate) {
 		this.debtorValueDate = debtorValueDate;
 	}
 
-	public String getCreditorValueDate() {
+	public Date getCreditorValueDate() {
 		return creditorValueDate;
 	}
 
-	public void setCreditorValueDate(String creditorValueDate) {
+	public void setCreditorValueDate(Date creditorValueDate) {
 		this.creditorValueDate = creditorValueDate;
 	}
 
@@ -142,19 +142,19 @@ public class TransferDTO {
 		this.amount = amount;
 	}
 
-	public boolean isUrgent() {
+	public Boolean getIsUrgent() {
 		return isUrgent;
 	}
 
-	public void setUrgent(boolean isUrgent) {
+	public void setIsUrgent(Boolean isUrgent) {
 		this.isUrgent = isUrgent;
 	}
 
-	public boolean isInstant() {
+	public Boolean getIsInstant() {
 		return isInstant;
 	}
 
-	public void setInstant(boolean isInstant) {
+	public void setIsInstant(Boolean isInstant) {
 		this.isInstant = isInstant;
 	}
 
@@ -182,20 +182,13 @@ public class TransferDTO {
 		this.fees = fees;
 	}
 
-	public boolean isHasTaxRelief() {
+	public Boolean getHasTaxRelief() {
 		return hasTaxRelief;
 	}
 
-	public void setHasTaxRelief(boolean hasTaxRelief) {
+	public void setHasTaxRelief(Boolean hasTaxRelief) {
 		this.hasTaxRelief = hasTaxRelief;
 	}
 
-	public ErrorDTO getError() {
-		return error;
-	}
-
-	public void setError(ErrorDTO error) {
-		this.error = error;
-	}
-	
 }
+

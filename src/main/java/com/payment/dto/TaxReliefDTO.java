@@ -3,11 +3,11 @@ package com.payment.dto;
 public class TaxReliefDTO {
 	
 	private String taxReliefId;
-	private boolean isCondoUpgrade;
+	private Boolean isCondoUpgrade;
 	private String creditorFiscalCode;
 	private String beneficiaryType;
-	private NaturalPersonBeneficiaryDTO naturalPersonBeneficiary = new NaturalPersonBeneficiaryDTO();
-	private LegalPersonBeneficiaryDTO legalPersonBeneficiary = new LegalPersonBeneficiaryDTO();
+	private NaturalPersonBeneficiaryDTO naturalPersonBeneficiary;
+	private LegalPersonBeneficiaryDTO legalPersonBeneficiary;
     
 	public TaxReliefDTO() {
 	}
@@ -20,11 +20,11 @@ public class TaxReliefDTO {
 		this.taxReliefId = taxReliefId;
 	}
 
-	public boolean isCondoUpgrade() {
+	public Boolean isCondoUpgrade() {
 		return isCondoUpgrade;
 	}
 
-	public void setCondoUpgrade(boolean isCondoUpgrade) {
+	public void setCondoUpgrade(Boolean isCondoUpgrade) {
 		this.isCondoUpgrade = isCondoUpgrade;
 	}
 

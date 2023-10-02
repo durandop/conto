@@ -1,20 +1,21 @@
 package com.payment.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class RequestDTO implements Serializable {
 	
-	private CreditorDTO creditor = new CreditorDTO();
-	private String executionDate;
+	private CreditorDTO creditor;
+	private Date executionDate;
 	private String uri;
 	private String description;
-	private int amount;
+	private Integer amount;
 	private String currency;
-	private boolean isUrgent;
-	private boolean isInstant;
+	private Boolean isUrgent;
+	private Boolean isInstant;
 	private String feeType;
 	private String feeAccountId;
-	private TaxReliefDTO taxRelief = new TaxReliefDTO();
+	private TaxReliefDTO taxRelief;
 	
 	public RequestDTO() {
 	}
@@ -27,11 +28,11 @@ public class RequestDTO implements Serializable {
 		this.creditor = creditor;
 	}
 
-	public String getExecutionDate() {
+	public Date getExecutionDate() {
 		return executionDate;
 	}
 
-	public void setExecutionDate(String executionDate) {
+	public void setExecutionDate(Date executionDate) {
 		this.executionDate = executionDate;
 	}
 
@@ -51,11 +52,11 @@ public class RequestDTO implements Serializable {
 		this.description = description;
 	}
 
-	public int getAmount() {
+	public Integer getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
 
@@ -67,19 +68,19 @@ public class RequestDTO implements Serializable {
 		this.currency = currency;
 	}
 
-	public boolean isUrgent() {
+	public Boolean getIsUrgent() {
 		return isUrgent;
 	}
 
-	public void setUrgent(boolean isUrgent) {
+	public void setIsUrgent(Boolean isUrgent) {
 		this.isUrgent = isUrgent;
 	}
 
-	public boolean isInstant() {
+	public Boolean getIsInstant() {
 		return isInstant;
 	}
 
-	public void setInstant(boolean isInstant) {
+	public void setIsInstant(Boolean isInstant) {
 		this.isInstant = isInstant;
 	}
 

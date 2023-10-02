@@ -14,7 +14,8 @@ public class ErrorHandler {
 	@ExceptionHandler(ExceptionRest.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public ResponseEntity<JsonResponse> handleCustomException(ExceptionRest e) {
-	      return new ResponseEntity<JsonResponse>(new JsonResponse(e.getCode(), e.getMessage()), HttpStatus.NOT_FOUND);   
+		HttpStatus status = (e.getStatus()!=null) ? e.getStatus() : HttpStatus.NOT_FOUND;
+	      return new ResponseEntity<JsonResponse>(new JsonResponse(e.getCode(), e.getMessage()), status);   
 	}
 	
 }

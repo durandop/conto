@@ -9,6 +9,11 @@ public class ListTransactionDTO {
 	public ListTransactionDTO() {
 	}
 
+	public ListTransactionDTO(List<TransactionDTO> list) {
+		super();
+		this.list = list;
+	}
+
 	public List<TransactionDTO> getList() {
 		return list;
 	}

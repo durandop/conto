@@ -4,7 +4,7 @@ public class FeeDTO {
 	
 	private String feeCode;
 	private String description;
-    private double amount;
+    private Double amount;
     private String currency;
 	
 	public FeeDTO() {
@@ -26,11 +26,11 @@ public class FeeDTO {
 		this.description = description;
 	}
 
-	public double getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 

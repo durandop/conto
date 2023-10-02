@@ -2,13 +2,13 @@ package com.payment.dto;
 
 import java.util.List;
 
-public class ResponseTransferDTO {
+public class ResponseSaldoDTO {
 	
 	private String status;
 	private List<ErrorDTO> errors;
-    private TransferDTO payload;
+    private SaldoDTO payload;
 	
-	public ResponseTransferDTO() {
+	public ResponseSaldoDTO() {
 	}
 
 	public String getStatus() {
@@ -27,12 +27,13 @@ public class ResponseTransferDTO {
 		this.errors = errors;
 	}
 
-	public TransferDTO getPayload() {
+	public SaldoDTO getPayload() {
 		return payload;
 	}
 
-	public void setPayload(TransferDTO payload) {
+	public void setPayload(SaldoDTO payload) {
 		this.payload = payload;
 	}
 	
+
 }

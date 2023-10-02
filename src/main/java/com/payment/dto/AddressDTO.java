@@ -9,12 +9,8 @@ public class AddressDTO {
 	public AddressDTO() {
 	}
 
-	public String getAddress() {
+	public Object getAddress() {
 		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
 	}
 
 	public String getCity() {
@@ -31,6 +27,10 @@ public class AddressDTO {
 
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 }

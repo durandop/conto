@@ -1,10 +1,12 @@
 package com.payment.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 public class CreditorDTO {
 	
 	private String name;
-	private AccountDTO account = new AccountDTO();
-	private AddressDTO address = new AddressDTO();
+	private AccountDTO account;
+	private AddressDTO address;
 	
 	public CreditorDTO() {
 	}

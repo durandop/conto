@@ -16,10 +16,10 @@ public class SaldoDTO {
 	private String activatedDate;
 	private String currency;
 	
-	protected SaldoDTO() {
+	public SaldoDTO() {
 	}
 	
-	protected SaldoDTO(String accountId, String iban, String abiCode, String cabCode, String countryCode, String internationalCin, String nationalCin, String account, String alias, String productName, String holderName,
+	public SaldoDTO(String accountId, String iban, String abiCode, String cabCode, String countryCode, String internationalCin, String nationalCin, String account, String alias, String productName, String holderName,
 			String activatedDate, String currency) {
 		super();
 		this.accountId = accountId;
