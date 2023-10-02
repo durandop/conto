@@ -47,7 +47,7 @@ public class ClientRestRequestImpl implements ClientRestRequest {
 			        accountId
 			);
 			
-			if (responseEntity.getStatusCode() == HttpStatus.OK) {
+			if (responseEntity.getStatusCodeValue() == HttpStatus.OK.value()) {
 				logger.log(Level.INFO, "Request Successful: "+responseEntity.getBody());
 			} 
 			response = responseEntity.getBody();
@@ -79,7 +79,7 @@ public class ClientRestRequestImpl implements ClientRestRequest {
 			        accountId
 			);
 			
-			if (responseEntity.getStatusCode() == HttpStatus.OK) {
+			if (responseEntity.getStatusCodeValue() == HttpStatus.OK.value()) {
 				logger.log(Level.INFO, "Request Successful: "+responseEntity.getBody());
 			} 
 			response = responseEntity.getBody();
@@ -110,7 +110,7 @@ public class ClientRestRequestImpl implements ClientRestRequest {
 			
 			responseEntity = restTemplate.postForEntity(url, request, ResponseTransferDTO.class);
 			
-			if (responseEntity.getStatusCode() == HttpStatus.OK) {
+			if (responseEntity.getStatusCodeValue() == HttpStatus.OK.value()) {
 				logger.log(Level.INFO, "Request Successful: "+responseEntity.getBody());
 			} 
 			response = responseEntity.getBody();

@@ -65,15 +65,15 @@ public class ContoServiceImpl implements ContoService {
 	public ListTransactionDTO letturaTransazioni(String accountId, Date fromAccountingDate, Date toAccountingDate) {
 		ListTransactionDTO transactions = null;
 		try {
-			String api = Constants.API_TRANSAZIONI;
-			
+			StringBuilder api = new StringBuilder(Constants.BASE_URL);
+			api.append(Constants.API_TRANSAZIONI);
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
 			String from = dateFormat.format(fromAccountingDate);
 			String to = dateFormat.format(toAccountingDate);
-			api = api.concat(Constants.FROM_ACCOUNTING_DATE).concat("=").concat(from);
-			api = api.concat("&"+Constants.TO_ACCOUNTING_DATE).concat("=").concat(to);
+			api.append(Constants.FROM_ACCOUNTING_DATE+"="+from);
+			api.append("&"+Constants.TO_ACCOUNTING_DATE+"="+to);
 			
-			ResponseTransactionDTO respTRan = restRequest.getRestTransazioni(Constants.BASE_URL+api, accountId);
+			ResponseTransactionDTO respTRan = restRequest.getRestTransazioni(api.toString(), accountId);
 			transactions = respTRan.getPayload();
 			
 		} catch (ExceptionRest e) {

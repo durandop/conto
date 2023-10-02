@@ -44,12 +44,12 @@ public class TestContoController {
 	   public void testLetturaSaldo() {
 	       
 	       SaldoDTO saldoDTO = new SaldoDTO();
-	       saldoDTO.setAccountId("14537780");
+	       saldoDTO.setCurrency("EUR");
 	       when(contoService.letturaSaldo(anyString())).thenReturn(saldoDTO);
 	       
 	       Long accountId = 14537780L;
 	       SaldoDTO responseEntity = controller.letturaSaldo(accountId);
-	       assertThat(responseEntity.getAccountId()).isEqualTo(accountId.toString());
+	       assertThat(responseEntity.getCurrency()).isEqualTo(saldoDTO.getCurrency());
 	   }
 	   
 	   @Test

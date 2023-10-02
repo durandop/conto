@@ -11,7 +11,7 @@ public class Constants {
 	public static final String API_KEY = "FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP";
 	public static final String TIME_ZONE = "Europe/Rome";
 	
-	public static final String API_SALDO = "/api/gbs/banking/v4.0/accounts/{accountId}";
+	public static final String API_SALDO = "/api/gbs/banking/v4.0/accounts/{accountId}/balance"; 
 	public static final String API_BONIFICO = "/api/gbs/banking/v4.0/accounts/{accountId}/payments/money-transfers";
 	public static final String API_TRANSAZIONI = "/api/gbs/banking/v4.0/accounts/{accountId}/transactions?";
 	public static final String FROM_ACCOUNTING_DATE = "fromAccountingDate";

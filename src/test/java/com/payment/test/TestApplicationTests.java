@@ -59,7 +59,7 @@ class TestApplicationTests {
     public void testServiceLetturaSaldo() {
     	String accountId = "14537780";
     	SaldoDTO saldo = contoService.letturaSaldo(accountId);
-        Assert.assertTrue(saldo!=null && saldo.getAccountId()!=null && saldo.getAccountId().equals(accountId.toString()));
+        Assert.assertTrue(saldo!=null && saldo.getCurrency()!=null);
     }
     
     @Test
